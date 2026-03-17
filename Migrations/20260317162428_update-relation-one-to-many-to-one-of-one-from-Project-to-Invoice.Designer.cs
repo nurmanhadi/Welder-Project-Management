@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WelderProjectManagement.Contexts;
 
@@ -10,9 +11,11 @@ using WelderProjectManagement.Contexts;
 namespace WelderProjectManagement.Migrations
 {
     [DbContext(typeof(WelderProjectManagementContext))]
-    partial class WelderProjectManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20260317162428_update-relation-one-to-many-to-one-of-one-from-Project-to-Invoice")]
+    partial class updaterelationonetomanytooneofonefromProjecttoInvoice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.5");
@@ -49,9 +52,6 @@ namespace WelderProjectManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Balance")
-                        .HasColumnType("decimal(18, 2)");
-
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("TEXT");
 
@@ -62,9 +62,6 @@ namespace WelderProjectManagement.Migrations
 
                     b.Property<DateTime>("IssueDate")
                         .HasColumnType("TEXT");
-
-                    b.Property<decimal>("PaidAmount")
-                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<long>("ProjectId")
                         .HasColumnType("INTEGER");

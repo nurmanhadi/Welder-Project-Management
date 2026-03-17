@@ -35,5 +35,5 @@ public class Project
 
     public ICollection<ProjectItem> ProjectItems { get; set; } = [];
     public ICollection<Payment> Payments { get; set; } = [];
-    public ICollection<Invoice> Invoices { get; set; } = [];
+    public Invoice? Invoice { get; set; }
 }

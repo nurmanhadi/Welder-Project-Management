@@ -33,4 +33,13 @@ public class ProjectController : ControllerBase
         var response = await projectService.GetProjects(page, size);
         return WebResponse<WebPagination<List<ProjectResponse>>>.Success(response, HttpContext);
     }
+
+    [HttpGet("{id}")]
+    [Produces("application/json")]
+    [ProducesResponseType(typeof(WebResponse<ProjectResponse>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<WebResponse<ProjectResponse>>> GetProjectById([FromRoute] long id)
+    {
+        var response = await projectService.GetProjectById(id);
+        return WebResponse<ProjectResponse>.Success(response, HttpContext);
+    }
 }

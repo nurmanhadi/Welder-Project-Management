@@ -33,4 +33,9 @@ public class ProjectResponse
     public string? Description { get; set; }
     public ProjectStatus Status { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    public ClientResponse? Client { get; set; }
+    public List<ProjectItemsResponse>? ProjectItems { get; set; }
+    public List<PaymentResponse>? Payment { get; set; }
+    public InvoiceResponse? Invoice { get; set; }
 }

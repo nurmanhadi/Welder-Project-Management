@@ -11,3 +11,10 @@ public class PaymentAddRequest
     [Required]
     public required PaymentType Type { get; set; }
 }
+public class PaymentResponse
+{
+    public long Id { get; set; }
+    public decimal Amount { get; set; }
+    public PaymentType Type { get; set; }
+    public DateTime PaymentDate { get; set; } = DateTime.UtcNow;
+}

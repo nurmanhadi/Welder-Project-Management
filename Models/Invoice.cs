@@ -19,6 +19,14 @@ public class Invoice
 
     [Required]
     [Column(TypeName = "decimal(18, 2)")]
+    public required decimal PaidAmount { get; set; }
+
+    [Required]
+    [Column(TypeName = "decimal(18, 2)")]
+    public required decimal Balance { get; set; }
+
+    [Required]
+    [Column(TypeName = "decimal(18, 2)")]
     public required decimal ServiceFee { get; set; }
 
     public DateTime IssueDate { get; set; } = DateTime.UtcNow;

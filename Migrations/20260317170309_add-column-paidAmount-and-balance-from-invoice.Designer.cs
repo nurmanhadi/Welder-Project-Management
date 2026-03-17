@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WelderProjectManagement.Contexts;
 
@@ -10,9 +11,11 @@ using WelderProjectManagement.Contexts;
 namespace WelderProjectManagement.Migrations
 {
     [DbContext(typeof(WelderProjectManagementContext))]
-    partial class WelderProjectManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20260317170309_add-column-paidAmount-and-balance-from-invoice")]
+    partial class addcolumnpaidAmountandbalancefrominvoice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.5");
