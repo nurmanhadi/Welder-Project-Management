@@ -1,0 +1,17 @@
+services:
+  stock-db:
+    container_name: welder_project_management
+    hostname: welder_project_management
+    image: postgres:18
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: welder_project_management
+      PGDATA: /var/lib/postgresql/18/docker
+    volumes:
+      - pg-data:/var/lib/postgresql
+
+volumes:
+  pg-data:

@@ -1,0 +1,6 @@
+@WelderProjectManagement_HostAddress = http://localhost:5046
+
+GET {{WelderProjectManagement_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
