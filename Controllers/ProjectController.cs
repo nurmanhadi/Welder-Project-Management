@@ -24,4 +24,13 @@ public class ProjectController : ControllerBase
         await projectService.AddProject(request);
         return WebResponse<string>.Success("OK", HttpContext);
     }
+
+    [HttpGet]
+    [Produces("application/json")]
+    [ProducesResponseType(typeof(WebResponse<WebPagination<List<ProjectResponse>>>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<WebResponse<WebPagination<List<ProjectResponse>>>>> GetProjects([FromQuery] int page = 1, [FromQuery] int size = 10)
+    {
+        var response = await projectService.GetProjects(page, size);
+        return WebResponse<WebPagination<List<ProjectResponse>>>.Success(response, HttpContext);
+    }
 }

@@ -98,4 +98,32 @@ public class ProjectService
             throw;
         }
     }
+
+    public async Task<WebPagination<List<ProjectResponse>>> GetProjects(int page, int size)
+    {
+        var projects = await db.Projects
+        .OrderByDescending(x => x.Id)
+        .Skip((page - 1) * size)
+        .Select(x => new ProjectResponse
+        {
+            Id = x.Id,
+            Title = x.Title,
+            Description = x.Description,
+            Status = x.Status,
+            CreatedAt = x.CreatedAt
+        })
+        .ToListAsync();
+
+        int totalElements = await db.Projects.CountAsync();
+        int totalPages = (totalElements + size - 1) / size;
+
+        return new WebPagination<List<ProjectResponse>>
+        {
+            Contents = projects,
+            Page = page,
+            Size = size,
+            TotalPages = totalPages,
+            TotalElements = totalPages
+        };
+    }
 }
