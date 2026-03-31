@@ -26,6 +26,17 @@ public class ProjectAddRequest
     public required InvoiceAddRequest Invoice { get; set; }
 }
 
+public class ProjectUpdateRequest
+{
+    [MaxLength(50)]
+    public string? Title { get; set; }
+
+    [MaxLength(500)]
+    public string? Description { get; set; }
+
+    public ProjectStatus? Status { get; set; }
+}
+
 public class ProjectResponse
 {
     public long Id { get; set; }

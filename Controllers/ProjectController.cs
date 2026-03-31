@@ -42,4 +42,13 @@ public class ProjectController : ControllerBase
         var response = await projectService.GetProjectById(id);
         return WebResponse<ProjectResponse>.Success(response, HttpContext);
     }
+
+    [HttpPut("{id}")]
+    [Produces("application/json")]
+    [ProducesResponseType(typeof(WebResponse<string>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<WebResponse<string>>> UpdateProject([FromRoute] long id, [FromBody] ProjectUpdateRequest request)
+    {
+        await projectService.UpdateProject(id, request);
+        return WebResponse<string>.Success("OK", HttpContext);
+    }
 }

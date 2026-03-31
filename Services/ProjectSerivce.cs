@@ -182,4 +182,23 @@ public class ProjectService
 
         return project;
     }
+
+    public async Task UpdateProject(long id, ProjectUpdateRequest request)
+    {
+        var project = await db.Projects.FindAsync(id) ?? throw new ProjectNotFoundException(id);
+
+        if (!string.IsNullOrWhiteSpace(request.Title))
+        {
+            project.Title = request.Title;
+        }
+        if (!string.IsNullOrWhiteSpace(request.Description))
+        {
+            project.Description = request.Description;
+        }
+        if (request.Status.HasValue)
+        {
+            project.Status = request.Status.Value;
+        }
+        await db.SaveChangesAsync();
+    }
 }
